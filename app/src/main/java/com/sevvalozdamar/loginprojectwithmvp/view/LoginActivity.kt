@@ -25,6 +25,18 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                 val password = etPassword.text.toString()
                 loginPresenter.loginClick(email, password)
             }
+            etEmail.setOnFocusChangeListener { _, hasFocus ->
+                if(!hasFocus){
+                    val email = etEmail.text.toString()
+                    loginPresenter.validateEmail(email)
+                }
+            }
+            etPassword.setOnFocusChangeListener { _, hasFocus ->
+                if(!hasFocus){
+                    val password = etPassword.text.toString()
+                    loginPresenter.validatePassword(password)
+                }
+            }
         }
     }
 
@@ -43,6 +55,22 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun hideProgressbar() {
         binding.pbLogin.visibility = View.GONE
+    }
+
+    override fun showEmailErrorMessage() {
+        binding.etEmail.error = "Email can not be empty"
+    }
+
+    override fun showPasswordErrorMessage() {
+        binding.etPassword.error = "Password can not be empty"
+    }
+
+    override fun clearEmailErrorMessage() {
+        binding.etEmail.error = null
+    }
+
+    override fun clearPasswordErrorMessage() {
+        binding.etPassword.error = null
     }
 
 }

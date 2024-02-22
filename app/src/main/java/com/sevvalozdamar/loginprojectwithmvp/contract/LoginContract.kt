@@ -8,6 +8,8 @@ interface LoginContract {
 
     interface Presenter {
         fun loginClick(email: String, password: String)
+        fun validateEmail(email: String)
+        fun validatePassword(password: String)
     }
 
     interface View {
@@ -15,6 +17,10 @@ interface LoginContract {
         fun showFailLoginResult()
         fun showProgressbar()
         fun hideProgressbar()
+        fun showEmailErrorMessage()
+        fun showPasswordErrorMessage()
+        fun clearEmailErrorMessage()
+        fun clearPasswordErrorMessage()
     }
 
 }
