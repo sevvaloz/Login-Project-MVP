@@ -3,6 +3,7 @@ package com.sevvalozdamar.loginprojectwithmvp.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.sevvalozdamar.loginprojectwithmvp.contract.LoginContract
 import com.sevvalozdamar.loginprojectwithmvp.databinding.ActivityLoginBinding
@@ -28,12 +29,20 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun showSuccessLoginResult() {
-        Toast.makeText(this, "Login successful.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, HomeActivity::class.java))
     }
 
     override fun showFailLoginResult() {
-        Toast.makeText(this, "Login failed.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Login failed.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showProgressbar() {
+        binding.pbLogin.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressbar() {
+        binding.pbLogin.visibility = View.GONE
     }
 
 }

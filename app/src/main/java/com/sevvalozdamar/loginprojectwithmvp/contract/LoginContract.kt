@@ -13,6 +13,8 @@ interface LoginContract {
     interface View {
         fun showSuccessLoginResult()
         fun showFailLoginResult()
+        fun showProgressbar()
+        fun hideProgressbar()
     }
 
 }

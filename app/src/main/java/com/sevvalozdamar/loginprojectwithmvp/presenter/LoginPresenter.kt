@@ -10,11 +10,14 @@ class LoginPresenter(
     private val model: LoginContract.Model = LoginModel()
 
     override fun loginClick(email: String, password: String) {
+        view.showProgressbar()
         val loginResult = model.checkLoginInfo(email, password)
         if(loginResult){
             view.showSuccessLoginResult()
+            view.hideProgressbar()
         } else {
             view.showFailLoginResult()
+            view.hideProgressbar()
         }
     }
 
